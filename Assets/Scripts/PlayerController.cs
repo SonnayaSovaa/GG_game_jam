@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public PlayerStats playerStats;
 
     // Флаг для взаимодействия
-    private bool interactPressed = false;
+    //private bool interactPressed = false;
     private GameObject currentEnemy;
 
     private void Awake()
@@ -32,8 +32,8 @@ public class PlayerController : MonoBehaviour
         inputActions.PlayerINPT.MoveRight.canceled += ctx => movementDirection.x = 0;
 
         inputActions.PlayerINPT.Attack.performed += ctx => Attack();
-        inputActions.PlayerINPT.Interact.performed += ctx => interactPressed = true;
-        inputActions.PlayerINPT.Interact.canceled += ctx => interactPressed = false;
+        //inputActions.PlayerINPT.Interact.performed += ctx => interactPressed = true;
+        //inputActions.PlayerINPT.Interact.canceled += ctx => interactPressed = false;
 
         rb = GetComponent<Rigidbody2D>();
         playerStats = GetComponent<PlayerStats>();
