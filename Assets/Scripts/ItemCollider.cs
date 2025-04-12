@@ -5,7 +5,7 @@ public class ItemCollider : MonoBehaviour
 {
     [SerializeField] private GameObject itemCanvas;
     [SerializeField] public float statChangeValue;
-    [SerializeField] public float healAmount = 20f;
+    [SerializeField] public float healAmount;
 
     private bool isInteractable = false;
     private InputActions inputActions;
