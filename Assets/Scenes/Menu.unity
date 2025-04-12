@@ -1507,9 +1507,9 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 871241424}
-  - {fileID: 1368594719}
   - {fileID: 1691532894}
   - {fileID: 359763478}
+  - {fileID: 1368594719}
   - {fileID: 520213397}
   m_Father: {fileID: 263607940}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19188,7 +19188,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.365
+  orthographic size: 0.61
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
