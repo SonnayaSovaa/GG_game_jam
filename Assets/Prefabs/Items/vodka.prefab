@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6963613918778316588}
   m_Layer: 0
   m_Name: vodka
-  m_TagString: Untagged
+  m_TagString: HealthItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,8 +29,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -23.173, y: -2.363, z: 0}
-  m_LocalScale: {x: 7.164252, y: 7.164252, z: 7.164252}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5727776923943964215}
   m_Father: {fileID: 0}
@@ -103,6 +103,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemCanvas: {fileID: 7863989086500705649}
+  statChangeValue: 10
+  healAmount: 30
 --- !u!61 &6963613918778316588
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -133,7 +135,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -141,7 +143,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.1, y: 0.12}
+    oldSize: {x: 0.5, y: 0.6}
     newSize: {x: 0.1, y: 0.12}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1032,6 +1034,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c51f7f5733d49e4c9397e97fbf364ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  food: 1
   applyText: {fileID: 7198691555846344666}
   mainObj: {fileID: 31168722258447357}

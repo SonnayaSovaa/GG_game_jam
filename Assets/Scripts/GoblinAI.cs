@@ -7,7 +7,7 @@ public class GoblinAI : MonoBehaviour
     public float moveSpeed = 3f; // Быстрая скорость
     public float attackDamage = 10f; // Урон от атаки
     private NavMeshAgent agent;
-
+    public float health = 50f;
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -41,5 +41,28 @@ public class GoblinAI : MonoBehaviour
                 playerStats.TakeDamage(attackDamage); // Наносим урон игроку
             }
         }
+    }
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+        Debug.Log($"Гоблин получил урон! Осталось здоровья: {health}");
+
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Debug.Log("Гоблин уничтожен!");
+        PlayerStats playerStats = target?.GetComponent<PlayerStats>();
+
+        if (playerStats != null)
+        {
+            playerStats.ModifyStat("Anger", -10f); // Уменьшаем гнев (убийство гоблина)
+        }
+
+        Destroy(gameObject);
     }
 }

@@ -5,13 +5,15 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
     public float moveSpeed = 5f;
+    //public float healAmount =15;
     private InputActions inputActions;
     private Vector2 movementDirection;
 
     public PlayerStats playerStats;
 
     // Флаг для взаимодействия
-    private bool interactPressed = false;
+    //private bool interactPressed = false;
+    private GameObject currentEnemy;
 
     private void Awake()
     {
@@ -30,8 +32,8 @@ public class PlayerController : MonoBehaviour
         inputActions.PlayerINPT.MoveRight.canceled += ctx => movementDirection.x = 0;
 
         inputActions.PlayerINPT.Attack.performed += ctx => Attack();
-        inputActions.PlayerINPT.Interact.performed += ctx => interactPressed = true;
-        inputActions.PlayerINPT.Interact.canceled += ctx => interactPressed = false;
+        //inputActions.PlayerINPT.Interact.performed += ctx => interactPressed = true;
+        //inputActions.PlayerINPT.Interact.canceled += ctx => interactPressed = false;
 
         rb = GetComponent<Rigidbody2D>();
         playerStats = GetComponent<PlayerStats>();
@@ -59,26 +61,56 @@ public class PlayerController : MonoBehaviour
 
     private void Attack()
     {
-        Debug.Log("Атака!");
-
-        // Проверяем, есть ли объект перед игроком
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, 1f);
-
-        if (hit.collider != null)
+        if (currentEnemy != null)
         {
-            if (hit.collider.CompareTag("Enemy")) 
+            Debug.Log($"Атакуем врага: {currentEnemy.name}");
+
+            if (currentEnemy.CompareTag("Enemy")) // Если это демон лени
             {
-                playerStats.ModifyStat("Laziness", 10f);
+                EnemyAI enemy = currentEnemy.GetComponent<EnemyAI>();
+                if (enemy != null)
+                {
+                    enemy.TakeDamage(10f); // Наносим урон демону лени
+                }
             }
-            else if (hit.collider.CompareTag("Goblin")) // Если это гоблин
+            else if (currentEnemy.CompareTag("Goblin")) // Если это гоблин
             {
-                Debug.Log("Убивать гоблинов нельзя!");
-                playerStats.ModifyStat("Anger", -10f); // Увеличиваем гнев
+                GoblinAI goblin = currentEnemy.GetComponent<GoblinAI>();
+                if (goblin != null)
+                {
+                    goblin.TakeDamage(10f); // Наносим урон гоблину
+                    playerStats.ModifyStat("Anger", -10f); // Уменьшаем гнев
+                }
+            }
+        }
+        else
+        {
+            Debug.Log("Перед игроком нет врагов.");
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy") || other.CompareTag("Goblin"))
+        {
+            Debug.Log($"Враг обнаружен: {other.name}");
+            currentEnemy = other.gameObject; // Сохраняем ссылку на текущего врага
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy") || other.CompareTag("Goblin"))
+        {
+            Debug.Log($"Враг покинул зону видимости: {other.name}");
+            if (currentEnemy == other.gameObject)
+            {
+                currentEnemy = null; // Очищаем ссылку на врага
             }
         }
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    /*private void OnTriggerStay2D(Collider2D other)
     {
         if (interactPressed)
         {
@@ -91,9 +123,9 @@ public class PlayerController : MonoBehaviour
                 UseHealthItem(other.gameObject);
             }
         }
-    }
+    }*/
 
-    private void CollectCoin(GameObject coin)
+   /* private void CollectCoin(GameObject coin)
     {
         Debug.Log("Взаимодействие с монетой!");
 
@@ -108,12 +140,12 @@ public class PlayerController : MonoBehaviour
         /*else
         {
             playerStats.ModifyStat("Greed", 10f); // Увеличиваем алчность
-        }*/
+        }
 
         Destroy(coin);
-    }
+    }*/
 
-    private void UseHealthItem(GameObject healthItem)
+    /*private void UseHealthItem(GameObject healthItem)
     {
         Debug.Log("Использован предмет здоровья!");
 
@@ -121,19 +153,25 @@ public class PlayerController : MonoBehaviour
 
         if (pickUp)
         {
+            playerStats.Heal(healAmount);
             Debug.Log("Вы съели предмет здоровья.");
             playerStats.ModifyStat("Gluttony", -10f); 
         }
        /* else
         {
             playerStats.ModifyStat("Gluttony", 10f); 
-        }*/
+        }*
 
         Destroy(healthItem);
-    }
+    }*/
 
-    private bool IsPickUp()
+   /* private bool IsPickUp()
     {
         return interactPressed; // Используем флаг взаимодействия
+    }*/
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + (Vector3)(movementDirection.normalized * 3f));
     }
 }
