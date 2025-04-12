@@ -12,7 +12,7 @@ public class ButtonBehaviour : MonoBehaviour
     {
         _startScale = obj.localScale;
         obj.localScale *= _scaleFactor;
-        //audioSource.PlayOneShot(onHoverSound);
+        audioSource.PlayOneShot(onHoverSound);
     }
 
     public void ExitHover(Transform obj)
