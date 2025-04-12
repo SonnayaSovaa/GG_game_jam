@@ -607,7 +607,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 2039775213}
         m_TargetAssemblyTypeName: IntroUIController, Assembly-CSharp
-        m_MethodName: Skip
+        m_MethodName: SkipOutro
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1690,7 +1690,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 2039775213}
         m_TargetAssemblyTypeName: IntroUIController, Assembly-CSharp
-        m_MethodName: NextIntro
+        m_MethodName: Exit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2281,6 +2281,7 @@ MonoBehaviour:
   godSource: {fileID: 2117445366}
   skullSource: {fileID: 855205864}
   finalPanel: {fileID: 1324301604}
+  shade: {fileID: 0}
 --- !u!114 &2039775214
 MonoBehaviour:
   m_ObjectHideFlags: 0

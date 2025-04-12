@@ -15,6 +15,7 @@ public class DoorEnd : MonoBehaviour
    
     IEnumerator Shading()
     {
+        shade.gameObject.SetActive(true);
         float a=0;
         while (a < 1f)
         {

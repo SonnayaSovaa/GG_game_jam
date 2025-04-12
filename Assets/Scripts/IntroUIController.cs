@@ -31,10 +31,12 @@ public class IntroUIController : MonoBehaviour
 
     [SerializeField] private GameObject finalPanel;
 
+    [SerializeField] private Image shade;
+
     private void Awake()
     {
         _dialogs = new List<string>();
-        StartCoroutine(Shading());
+        StartCoroutine(Skull());
         ReadTextFile(path);
     }
     
@@ -86,7 +88,7 @@ public class IntroUIController : MonoBehaviour
     
     public void Skip()
     {
-        SceneManager.LoadScene(2);
+        StartCoroutine(Shading());
     }
     
     void ReadTextFile(string file_path)
@@ -104,7 +106,7 @@ public class IntroUIController : MonoBehaviour
     }
     
 
-    IEnumerator Shading()
+    IEnumerator Skull()
     {
         yield return new WaitForSeconds(1.5f);
         float a=1f;
@@ -120,7 +122,7 @@ public class IntroUIController : MonoBehaviour
         TextChange(0);
     }
 
-    void SkipOutro()
+    public void SkipOutro()
     {
         finalPanel.SetActive(true);
     }
@@ -128,6 +130,20 @@ public class IntroUIController : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
+    }
+    
+    IEnumerator Shading()
+    {
+        shade.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        float a=0;
+        while (a < 1f)
+        {
+            a += 0.03f;
+            shade.color = new Color(0, 0, 0, a);
+            yield return new WaitForSeconds(0.05f);
+        }
+        SceneManager.LoadScene(2);
     }
 }
 
