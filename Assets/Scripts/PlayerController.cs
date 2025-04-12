@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     // Флаг для взаимодействия
     private bool interactPressed = false;
+    private GameObject currentEnemy;
 
     private void Awake()
     {
@@ -60,38 +61,23 @@ public class PlayerController : MonoBehaviour
 
     private void Attack()
     {
-        Debug.Log("Атака!");
-
-        // Определяем направление атаки
-        Vector2 attackDirection = movementDirection.normalized; // Направление движения игрока
-
-        if (attackDirection == Vector2.zero)
+        if (currentEnemy != null)
         {
-            // Если игрок стоит на месте, используем направление взгляда по умолчанию (вправо)
-            attackDirection = Vector2.right;
-        }
+            Debug.Log($"Атакуем врага: {currentEnemy.name}");
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, attackDirection, 3f);
-
-        if (hit.collider != null)
-        {
-            Debug.Log($"Raycast попал в объект: {hit.collider.name}");
-
-            if (hit.collider.CompareTag("Enemy")) // Если это враг
+            if (currentEnemy.CompareTag("Enemy")) // Если это демон лени
             {
-                EnemyAI enemy = hit.collider.GetComponent<EnemyAI>();
+                EnemyAI enemy = currentEnemy.GetComponent<EnemyAI>();
                 if (enemy != null)
                 {
-                    Debug.Log("Наносим урон демону лени.");
                     enemy.TakeDamage(10f); // Наносим урон демону лени
                 }
             }
-            else if (hit.collider.CompareTag("Goblin")) // Если это гоблин
+            else if (currentEnemy.CompareTag("Goblin")) // Если это гоблин
             {
-                GoblinAI goblin = hit.collider.GetComponent<GoblinAI>();
+                GoblinAI goblin = currentEnemy.GetComponent<GoblinAI>();
                 if (goblin != null)
                 {
-                    Debug.Log("Наносим урон гоблину.");
                     goblin.TakeDamage(10f); // Наносим урон гоблину
                     playerStats.ModifyStat("Anger", -10f); // Уменьшаем гнев
                 }
@@ -99,7 +85,28 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Debug.Log("Raycast не попал ни в один объект.");
+            Debug.Log("Перед игроком нет врагов.");
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy") || other.CompareTag("Goblin"))
+        {
+            Debug.Log($"Враг обнаружен: {other.name}");
+            currentEnemy = other.gameObject; // Сохраняем ссылку на текущего врага
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy") || other.CompareTag("Goblin"))
+        {
+            Debug.Log($"Враг покинул зону видимости: {other.name}");
+            if (currentEnemy == other.gameObject)
+            {
+                currentEnemy = null; // Очищаем ссылку на врага
+            }
         }
     }
 
