@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    public float maxHealth = 100f;
     public float health = 100f;
     public float anger = 0f; // Гнев
     public float greed = 0f; // Алчность
@@ -44,18 +45,26 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    
+
     public void TakeDamage(float amount)
     {
         health -= amount;
+        health = Mathf.Clamp(health, 0f, maxHealth);
         if (health <= 0)
         {
             Debug.Log("Игрок умер!");
             RestartLevel();
         }
     }
+    public void Heal(float amount)
+    {
+        health += amount;
+        health = Mathf.Clamp(health, 0f, maxHealth); 
 
-    private void RestartLevel()
+        Debug.Log($"Игрок восстановил здоровье! Текущее здоровье: {health}");
+    }
+
+        private void RestartLevel()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }

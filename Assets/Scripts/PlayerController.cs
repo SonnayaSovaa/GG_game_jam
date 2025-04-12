@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
     public float moveSpeed = 5f;
+    public float healAmount =15;
     private InputActions inputActions;
     private Vector2 movementDirection;
 
@@ -61,20 +62,44 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Атака!");
 
-        // Проверяем, есть ли объект перед игроком
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, 1f);
+        // Определяем направление атаки
+        Vector2 attackDirection = movementDirection.normalized; // Направление движения игрока
+
+        if (attackDirection == Vector2.zero)
+        {
+            // Если игрок стоит на месте, используем направление взгляда по умолчанию (вправо)
+            attackDirection = Vector2.right;
+        }
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, attackDirection, 3f);
 
         if (hit.collider != null)
         {
-            if (hit.collider.CompareTag("Enemy")) 
+            Debug.Log($"Raycast попал в объект: {hit.collider.name}");
+
+            if (hit.collider.CompareTag("Enemy")) // Если это враг
             {
-                playerStats.ModifyStat("Laziness", 10f);
+                EnemyAI enemy = hit.collider.GetComponent<EnemyAI>();
+                if (enemy != null)
+                {
+                    Debug.Log("Наносим урон демону лени.");
+                    enemy.TakeDamage(10f); // Наносим урон демону лени
+                }
             }
             else if (hit.collider.CompareTag("Goblin")) // Если это гоблин
             {
-                Debug.Log("Убивать гоблинов нельзя!");
-                playerStats.ModifyStat("Anger", -10f); // Увеличиваем гнев
+                GoblinAI goblin = hit.collider.GetComponent<GoblinAI>();
+                if (goblin != null)
+                {
+                    Debug.Log("Наносим урон гоблину.");
+                    goblin.TakeDamage(10f); // Наносим урон гоблину
+                    playerStats.ModifyStat("Anger", -10f); // Уменьшаем гнев
+                }
             }
+        }
+        else
+        {
+            Debug.Log("Raycast не попал ни в один объект.");
         }
     }
 
@@ -121,6 +146,7 @@ public class PlayerController : MonoBehaviour
 
         if (pickUp)
         {
+            playerStats.Heal(healAmount);
             Debug.Log("Вы съели предмет здоровья.");
             playerStats.ModifyStat("Gluttony", -10f); 
         }
@@ -135,5 +161,10 @@ public class PlayerController : MonoBehaviour
     private bool IsPickUp()
     {
         return interactPressed; // Используем флаг взаимодействия
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + (Vector3)(movementDirection.normalized * 3f));
     }
 }
