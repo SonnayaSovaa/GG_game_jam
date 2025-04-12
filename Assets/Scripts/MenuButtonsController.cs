@@ -1,10 +1,14 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuButtonsController : MonoBehaviour
 {
     [SerializeField] private GameObject mainPanel;
     [SerializeField] private GameObject controlPanel;
+
+    [SerializeField] private Image shade;
 
 
     public void Exit()
@@ -14,7 +18,7 @@ public class MenuButtonsController : MonoBehaviour
 
     public void Play()
     {
-        SceneManager.LoadScene(1);
+        StartCoroutine(Shading());
     }
 
     public void ToControls()
@@ -27,6 +31,22 @@ public class MenuButtonsController : MonoBehaviour
     {
         controlPanel.SetActive(false);
         mainPanel.SetActive(true);
+    }
+    
+    IEnumerator Shading()
+    {
+        shade.gameObject.SetActive(true);
+
+        float a=0;
+        while (a < 1f)
+        {
+            a += 0.03f;
+            shade.color = new Color(0, 0, 0, a);
+            yield return new WaitForSeconds(0.05f);
+        }
+
+        SceneManager.LoadScene(1);
+
     }
 
 }

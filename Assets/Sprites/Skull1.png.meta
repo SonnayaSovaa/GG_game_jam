@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: 95b2fabbe4de84d4a9b4106b89887c6d
+guid: 35b3f6ec544d3994b9082a9b5206ea45
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4876193424458489534
-    second: "\u0411\u0435\u0437 \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u044F2102_20250412173758_0"
-  - first:
-      213: -5622593602795684477
-    second: "\u0411\u0435\u0437 \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u044F2102_20250412173758_1"
-  - first:
-      213: -568034496224182166
-    second: "\u0411\u0435\u0437 \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u044F2102_20250412173758_2"
-  - first:
-      213: 2140088164178321649
-    second: "\u0411\u0435\u0437 \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u044F2102_20250412173758_3"
+      213: -5457816797880154916
+    second: export202504122259374818_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -55,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -122,89 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: vodka
+      name: export202504122259374818_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 21
-        width: 10
-        height: 12
+        x: 0
+        y: 0
+        width: 33
+        height: 33
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2416e076ae7445cb0800000000000000
-      internalID: -4876193424458489534
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cocktail
-      rect:
-        serializedVersion: 2
-        x: 23
-        y: 18
-        width: 11
-        height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 38dbaf478e888f1b0800000000000000
-      internalID: -5622593602795684477
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fri
-      rect:
-        serializedVersion: 2
-        x: 5
-        y: 6
-        width: 11
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a60c360a2afed18f0800000000000000
-      internalID: -568034496224182166
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hamburger
-      rect:
-        serializedVersion: 2
-        x: 20
-        y: 6
-        width: 15
-        height: 10
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1f0edddb8de13bd10800000000000000
-      internalID: 2140088164178321649
+      spriteID: cd481310a80f144b0800000000000000
+      internalID: -5457816797880154916
       vertices: []
       indices: 
       edges: []
@@ -213,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6a19d324cdd35234fae6d6d79317ef74
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -223,10 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      cocktail: -5622593602795684477
-      fri: -568034496224182166
-      hamburger: 2140088164178321649
-      vodka: -4876193424458489534
+      export202504122259374818_0: -5457816797880154916
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
