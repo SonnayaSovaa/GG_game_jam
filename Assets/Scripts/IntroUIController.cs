@@ -17,7 +17,7 @@ public class IntroUIController : MonoBehaviour
 
     [SerializeField] private string path;
 
-    public List<string> dialogs;
+    private List<string> _dialogs;
 
     private string _inputLine;
 
@@ -29,19 +29,16 @@ public class IntroUIController : MonoBehaviour
 
     private string _currString;
 
+    [SerializeField] private GameObject finalPanel;
+
     private void Awake()
     {
-        dialogs = new List<string>();
+        _dialogs = new List<string>();
         StartCoroutine(Shading());
         ReadTextFile(path);
     }
     
-    
-    
-    
-    //----------------------------------------
-    
-    
+ 
     public void NextIntro()
     {
         StopAllCoroutines();
@@ -59,7 +56,7 @@ public class IntroUIController : MonoBehaviour
         skullText.text="";
         godText.text="";
 
-        _currString = dialogs[num];
+        _currString = _dialogs[num];
 
         if (_currString[0] == '~')
         {
@@ -85,10 +82,7 @@ public class IntroUIController : MonoBehaviour
         }
         source.Stop();
     }
-
- 
     
-    //----------------------------------------
     
     public void Skip()
     {
@@ -102,11 +96,11 @@ public class IntroUIController : MonoBehaviour
         while(!_stream.EndOfStream)
         {
             _inputLine = _stream.ReadLine( );
-            dialogs.Add(_inputLine);
+            _dialogs.Add(_inputLine);
         }
 
         _stream.Close( );  
-        _lastText = dialogs.Count;
+        _lastText = _dialogs.Count;
     }
     
 
@@ -124,6 +118,16 @@ public class IntroUIController : MonoBehaviour
         skull.gameObject.SetActive(false);
         buttons.SetActive(true);
         TextChange(0);
+    }
+
+    void SkipOutro()
+    {
+        finalPanel.SetActive(true);
+    }
+    
+    public void Exit()
+    {
+        Application.Quit();
     }
 }
 
