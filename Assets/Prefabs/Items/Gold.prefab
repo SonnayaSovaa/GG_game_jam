@@ -724,7 +724,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -26.722, y: -3.17, z: 0}
   m_LocalScale: {x: 4.6427073, y: 4.6427073, z: 4.6427073}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2790894137749645707}
   m_Father: {fileID: 0}
@@ -798,6 +798,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemCanvas: {fileID: 4695565751915152568}
   statChangeValue: 15
+  healAmount: 20
 --- !u!61 &3304444229537116306
 BoxCollider2D:
   m_ObjectHideFlags: 0
