@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 6821789596511069409}
   m_Layer: 0
   m_Name: fri
-  m_TagString: Untagged
+  m_TagString: HealthItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -294,6 +294,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemCanvas: {fileID: 3155725637377190927}
+  statChangeValue: 10
+  healAmount: 10
 --- !u!61 &6821789596511069409
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -705,7 +707,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c51f7f5733d49e4c9397e97fbf364ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  food: 1
   applyText: {fileID: 4702185857054610151}
   mainObj: {fileID: 1188780870950709499}
 --- !u!1 &3591119024022993595

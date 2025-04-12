@@ -863,10 +863,10 @@ GameObject:
   - component: {fileID: 1544083186}
   - component: {fileID: 1544083185}
   - component: {fileID: 1544083188}
-  - component: {fileID: 1544083189}
+  - component: {fileID: 1544083190}
   m_Layer: 0
   m_Name: En
-  m_TagString: Enemy
+  m_TagString: Goblin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1009,7 +1009,7 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
---- !u!114 &1544083189
+--- !u!114 &1544083190
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1018,14 +1018,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1544083182}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3dff662b79f78e448080c182e8a2561, type: 3}
+  m_Script: {fileID: 11500000, guid: d410674084277b745a71fc34eccfac59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 978037944}
-  health: 100
-  slowAmount: 0.25
-  attackDamag: 5
-  lazinessInterval: 1
+  moveSpeed: 3
+  attackDamage: 10
+  health: 50
 --- !u!1 &1557839185
 GameObject:
   m_ObjectHideFlags: 0

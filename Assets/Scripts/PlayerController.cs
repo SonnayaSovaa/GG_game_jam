@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
     public float moveSpeed = 5f;
-    public float healAmount =15;
+    //public float healAmount =15;
     private InputActions inputActions;
     private Vector2 movementDirection;
 
@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    /*private void OnTriggerStay2D(Collider2D other)
     {
         if (interactPressed)
         {
@@ -123,9 +123,9 @@ public class PlayerController : MonoBehaviour
                 UseHealthItem(other.gameObject);
             }
         }
-    }
+    }*/
 
-    private void CollectCoin(GameObject coin)
+   /* private void CollectCoin(GameObject coin)
     {
         Debug.Log("Взаимодействие с монетой!");
 
@@ -140,12 +140,12 @@ public class PlayerController : MonoBehaviour
         /*else
         {
             playerStats.ModifyStat("Greed", 10f); // Увеличиваем алчность
-        }*/
+        }
 
         Destroy(coin);
-    }
+    }*/
 
-    private void UseHealthItem(GameObject healthItem)
+    /*private void UseHealthItem(GameObject healthItem)
     {
         Debug.Log("Использован предмет здоровья!");
 
@@ -160,15 +160,15 @@ public class PlayerController : MonoBehaviour
        /* else
         {
             playerStats.ModifyStat("Gluttony", 10f); 
-        }*/
+        }*
 
         Destroy(healthItem);
-    }
+    }*/
 
-    private bool IsPickUp()
+   /* private bool IsPickUp()
     {
         return interactPressed; // Используем флаг взаимодействия
-    }
+    }*/
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
