@@ -798,7 +798,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemCanvas: {fileID: 4695565751915152568}
   statChangeValue: 15
-  healAmount: 20
+  healAmount: 0
 --- !u!61 &3304444229537116306
 BoxCollider2D:
   m_ObjectHideFlags: 0
