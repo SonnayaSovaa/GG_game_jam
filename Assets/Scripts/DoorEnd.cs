@@ -7,7 +7,7 @@ public class DoorEnd : MonoBehaviour
 {
 
     [SerializeField] private Image shade;
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         
         var player = other.GetComponent<PlayerStats>();
