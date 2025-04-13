@@ -13,12 +13,13 @@ public class DistanceSlider : MonoBehaviour
 
     private void Awake()
     {
-        _fullDistance = Vector3.Distance(target.position, player.position);
+        _fullDistance = Vector3.Distance(player.position, target.position);
     }
 
     private void Update()
     {
-        _currDist=Vector3.Distance(target.position, player.position);
-        distSlider.value = _currDist / _fullDistance;
+        _currDist = Vector3.Distance(player.position, target.position);
+        distSlider.value = 1 - _currDist / _fullDistance;
+
     }
 }
