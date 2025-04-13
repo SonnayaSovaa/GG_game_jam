@@ -9,6 +9,10 @@ public class DoorEnd : MonoBehaviour
     [SerializeField] private Image shade;
     private void OnTriggerEnter(Collider other)
     {
+        
+        var player = other.GetComponent<PlayerStats>();
+        float win = player.anger+player.gluttony+player.laziness+player.greed;
+        PlayerPrefs.SetFloat("Win", win);
         StartCoroutine(Shading());
     }
     
