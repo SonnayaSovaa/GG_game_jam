@@ -46,11 +46,7 @@ public class PlayerController : MonoBehaviour
             sprite.flipX = false;
         }
 
-        void RightPressed()
-        {
-            movementDirection.x = 1;
-            sprite.flipX = false;
-        }
+        
         inputActions.PlayerINPT.Attack.performed += ctx => Attack();
 
         int press_count = 0;
