@@ -12,7 +12,9 @@ public class EnemyAI : MonoBehaviour
 
     public float lazinessInterval = 1f;
     private float lazinessTimer = 0f;
-    
+    public float attackInterval = 1;
+    public AudioSource audio;
+    private float timer = 0f;
     [SerializeField] private SpriteRenderer sprite;
     private float _prevPointX;
     private void Start()
@@ -59,8 +61,13 @@ public class EnemyAI : MonoBehaviour
 
             if (playerStats != null)
             {
-                playerStats.ModifyStat("Laziness", -10f); // Увеличиваем лень
+                 if (timer >= attackInterval)
+            {
+                playerStats.ModifyStat("Laziness", -10f);
+                audio.Play(); // Увеличиваем лень
             }
+            timer = 0f; 
+            }     
         }
     }
     private void OnTriggerStay2D(Collider2D other)
