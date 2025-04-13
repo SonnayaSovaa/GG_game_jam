@@ -132,6 +132,7 @@ MonoBehaviour:
   slowAmount: 0.5
   attackDamag: 5
   lazinessInterval: 1
+  attackInterval: 1
   audio: {fileID: 8448441417553660015}
   sprite: {fileID: 8099348365315805921}
 --- !u!61 &1265850622881998409
@@ -202,7 +203,7 @@ AudioSource:
   m_GameObject: {fileID: 375392705238907128}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -6232730346607646497, guid: 20a97d19ef09c194cb490dc875337be3, type: 2}
+  OutputAudioMixerGroup: {fileID: 3838684802843467783, guid: 20a97d19ef09c194cb490dc875337be3, type: 2}
   m_audioClip: {fileID: 8300000, guid: 1fcfbfc5b645ecd458950ed0e231ee55, type: 3}
   m_Resource: {fileID: 8300000, guid: 1fcfbfc5b645ecd458950ed0e231ee55, type: 3}
   m_PlayOnAwake: 0
