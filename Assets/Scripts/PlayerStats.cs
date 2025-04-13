@@ -1,4 +1,5 @@
 using TMPro;
+using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.UI;
 public class PlayerStats : MonoBehaviour
@@ -20,6 +21,9 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private TextMeshProUGUI greedText;
     [SerializeField] private TextMeshProUGUI gluttonyText;
     [SerializeField] private TextMeshProUGUI lazinessText;
+
+    [SerializeField] private Slider healthBar;
+
     private void Update()
     {
         UpdateUI(); // Инициализируем UI
@@ -66,6 +70,7 @@ public class PlayerStats : MonoBehaviour
     {
         health -= amount;
         health = Mathf.Clamp(health, 0f, maxHealth);
+        healthBar.value = health / maxHealth;
         if (health <= 0)
         {
             Debug.Log("Игрок умер!");

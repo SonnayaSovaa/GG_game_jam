@@ -1,5 +1,7 @@
+using System;
 using TMPro;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public class ItemCanvasController : MonoBehaviour
 {
@@ -9,6 +11,8 @@ public class ItemCanvasController : MonoBehaviour
 
     private PlayerStats playerStats;
     private ItemCollider itemCollider;
+
+    [SerializeField] private TMP_Text coins;
     private void Awake()
     {
         playerStats = Object.FindAnyObjectByType<PlayerStats>();
@@ -39,6 +43,7 @@ public class ItemCanvasController : MonoBehaviour
             // Если это монета
             playerStats.ModifyStat("Greed", -itemCollider.statChangeValue); // Уменьшаем алчность
             Debug.Log("Игрок подобрал монету.");
+            coins.text = Convert.ToString(Convert.ToInt32(coins.text) + 10);
         }
         else if (mainObj.CompareTag("HealthItem"))
         {
