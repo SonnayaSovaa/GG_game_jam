@@ -1,6 +1,7 @@
 using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.U2D;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class PlayerController : MonoBehaviour
     // Флаг для взаимодействия
     //private bool interactPressed = false;
     private GameObject currentEnemy;
-
+    [SerializeField] private SpriteRenderer sprite;
     private void Awake()
     {
         inputActions = new InputActions();
@@ -27,30 +28,58 @@ public class PlayerController : MonoBehaviour
         inputActions.PlayerINPT.MoveDown.performed += ctx => movementDirection.y = -1;
         inputActions.PlayerINPT.MoveDown.canceled += ctx => movementDirection.y = 0;
 
-        inputActions.PlayerINPT.MoveLeft.performed += ctx => movementDirection.x = -1;
+        inputActions.PlayerINPT.MoveLeft.performed += ctx => LeftPressed();
         inputActions.PlayerINPT.MoveLeft.canceled += ctx => movementDirection.x = 0;
 
-        inputActions.PlayerINPT.MoveRight.performed += ctx => movementDirection.x = 1;
+        void LeftPressed()
+        {
+            movementDirection.x = -1;
+            sprite.flipX = true;
+        }
+
+        inputActions.PlayerINPT.MoveRight.performed += ctx => RightPressed();
         inputActions.PlayerINPT.MoveRight.canceled += ctx => movementDirection.x = 0;
 
+        void RightPressed()
+        {
+            movementDirection.x = 1;
+            sprite.flipX = false;
+        }
         inputActions.PlayerINPT.Attack.performed += ctx => Attack();
-        
+
+        int press_count = 0;
+
+        void MovePressed()
+        {
+            press_count++;
+            anim.SetBool("walk", true);
+        }
+
+        void MoveCancel()
+        {
+            press_count--;
+            if (press_count < 1)
+            {
+                anim.SetBool("walk", false);
+            }
+        }
+        inputActions.PlayerINPT.Attack.performed += ctx => anim.Play("gg_attack");
+
         // Анимации (кринжа, i know)
-        inputActions.PlayerINPT.MoveUp.performed += ctx => anim.SetBool("walk", true);;
-        inputActions.PlayerINPT.MoveUp.canceled += ctx => anim.SetBool("walk", false);;
+        inputActions.PlayerINPT.MoveUp.performed += ctx => MovePressed();
+        inputActions.PlayerINPT.MoveUp.canceled += ctx => MoveCancel();
 
-        inputActions.PlayerINPT.MoveDown.performed += ctx => anim.SetBool("walk", true);;
-        inputActions.PlayerINPT.MoveDown.canceled += ctx => anim.SetBool("walk", false);;
+        inputActions.PlayerINPT.MoveDown.performed += ctx => MovePressed(); ;
+        inputActions.PlayerINPT.MoveDown.canceled += ctx => MoveCancel();
 
-        inputActions.PlayerINPT.MoveLeft.performed += ctx => anim.SetBool("walk", true);;
-        inputActions.PlayerINPT.MoveLeft.canceled += ctx => anim.SetBool("walk", false);;
+        inputActions.PlayerINPT.MoveLeft.performed += ctx => MovePressed();
+        inputActions.PlayerINPT.MoveLeft.canceled += ctx => MoveCancel();
 
-        inputActions.PlayerINPT.MoveRight.performed += ctx => anim.SetBool("walk", true);;
-        inputActions.PlayerINPT.MoveRight.canceled += ctx => anim.SetBool("walk", false);;
+        inputActions.PlayerINPT.MoveRight.performed += ctx => MovePressed();
+        inputActions.PlayerINPT.MoveRight.canceled += ctx => MoveCancel();
 
 
-        inputActions.PlayerINPT.Attack.performed += ctx => anim.SetBool("attack", true);
-        inputActions.PlayerINPT.Attack.canceled += ctx => anim.SetBool("attack", false);
+
         //inputActions.PlayerINPT.Interact.performed += ctx => interactPressed = true;
         //inputActions.PlayerINPT.Interact.canceled += ctx => interactPressed = false;
 
@@ -75,7 +104,15 @@ public class PlayerController : MonoBehaviour
 
     private void MoveCharacter()
     {
-        rb.linearVelocity = movementDirection * moveSpeed;        
+        // Движение через Transform
+        Vector3 movement = new Vector3(movementDirection.x, movementDirection.y, 0) * moveSpeed * Time.deltaTime;
+        transform.position += movement;
+
+        // Визуализация направления движения
+        if (movementDirection != Vector2.zero)
+        {
+            Debug.DrawLine(transform.position, transform.position + (Vector3)movementDirection.normalized * 3f, Color.red);
+        }
     }
 
     private void Attack()
@@ -98,7 +135,7 @@ public class PlayerController : MonoBehaviour
                 GoblinAI goblin = currentEnemy.GetComponent<GoblinAI>();
                 if (goblin != null)
                 {
-                    goblin.TakeDamage(15f); // Наносим урон гоблину
+                    goblin.TakeDamage(20f); // Наносим урон гоблину
                     playerStats.ModifyStat("Anger", -10f); // Уменьшаем гнев
                 }
             }
