@@ -89,6 +89,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""d76f1941-aa92-4a5a-b344-6aa95b697bee"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -201,6 +210,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""MoveDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5410200f-be1b-4731-a8b6-563316f99ccd"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -277,6 +297,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_PlayerINPT_Attack = m_PlayerINPT.FindAction("Attack", throwIfNotFound: true);
         m_PlayerINPT_Interact = m_PlayerINPT.FindAction("Interact", throwIfNotFound: true);
         m_PlayerINPT_Move = m_PlayerINPT.FindAction("Move", throwIfNotFound: true);
+        m_PlayerINPT_Pause = m_PlayerINPT.FindAction("Pause", throwIfNotFound: true);
     }
 
     ~@InputActions()
@@ -350,6 +371,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerINPT_Attack;
     private readonly InputAction m_PlayerINPT_Interact;
     private readonly InputAction m_PlayerINPT_Move;
+    private readonly InputAction m_PlayerINPT_Pause;
     public struct PlayerINPTActions
     {
         private @InputActions m_Wrapper;
@@ -361,6 +383,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @Attack => m_Wrapper.m_PlayerINPT_Attack;
         public InputAction @Interact => m_Wrapper.m_PlayerINPT_Interact;
         public InputAction @Move => m_Wrapper.m_PlayerINPT_Move;
+        public InputAction @Pause => m_Wrapper.m_PlayerINPT_Pause;
         public InputActionMap Get() { return m_Wrapper.m_PlayerINPT; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -391,6 +414,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IPlayerINPTActions instance)
@@ -416,6 +442,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IPlayerINPTActions instance)
@@ -487,5 +516,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }
