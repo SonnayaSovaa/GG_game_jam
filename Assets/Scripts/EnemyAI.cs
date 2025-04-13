@@ -4,7 +4,7 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     public Transform target;
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
     public float health = 100f;
     // Скорость замедления игрока
     public float slowAmount = 0.5f;
@@ -17,7 +17,7 @@ public class EnemyAI : MonoBehaviour
     private float _prevPointX;
     private void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        //agent = GetComponent<NavMeshAgent>();
 
         if (target == null)
         {

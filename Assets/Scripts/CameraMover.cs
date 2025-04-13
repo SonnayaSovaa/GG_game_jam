@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class CameraMover : MonoBehaviour
-{[Header("Настройки")]
+{
     [SerializeField] private Transform target;
     [SerializeField] private float smoothSpeed = 0.1f; 
     [SerializeField] private float xOffset = 0f; 
