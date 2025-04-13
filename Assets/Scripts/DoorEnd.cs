@@ -23,7 +23,7 @@ public class DoorEnd : MonoBehaviour
             shade.color = new Color(0, 0, 0, a);
             yield return new WaitForSeconds(0.05f);
         }
-
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene(3);
 
     }

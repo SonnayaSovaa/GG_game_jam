@@ -781,7 +781,7 @@ MonoBehaviour:
   buttons: {fileID: 1190108161}
   skullText: {fileID: 1461812474}
   godText: {fileID: 2004554069}
-  path: Assets/INTROtext.txt
+  _dialogs: []
   godSource: {fileID: 1026748730}
   skullSource: {fileID: 1747181234}
   finalPanel: {fileID: 0}
@@ -1048,7 +1048,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5865868911541253275, guid: 8d787d1876a069f43a7d12f672982660, type: 3}
       propertyPath: orthographic size
-      value: 4.77
+      value: 3.65
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
