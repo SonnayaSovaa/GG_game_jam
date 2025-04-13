@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
 
     public PlayerStats playerStats;
 
+    public AudioSource audio;
+
     // Флаг для взаимодействия
     //private bool interactPressed = false;
     private GameObject currentEnemy;
@@ -116,6 +118,7 @@ public class PlayerController : MonoBehaviour
 
     private void Attack()
     {
+        audio.Play();
         
         if (currentEnemy != null)
         {

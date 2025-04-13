@@ -60,14 +60,12 @@ public class EnemyAI : MonoBehaviour
             }
 
             if (playerStats != null)
-            {
-                 if (timer >= attackInterval)
+                       
             {
                 playerStats.ModifyStat("Laziness", -10f);
                 audio.Play(); // Увеличиваем лень
-            }
-            timer = 0f; 
-            }     
+            }        
+               
         }
     }
     private void OnTriggerStay2D(Collider2D other)

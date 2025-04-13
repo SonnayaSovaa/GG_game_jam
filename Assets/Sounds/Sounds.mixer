@@ -49,7 +49,8 @@ AudioMixerGroupController:
   m_Name: Attacks
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: f8ddde9c4cb58b843bf977fe9c4297b8
-  m_Children: []
+  m_Children:
+  - {fileID: 3838684802843467783}
   m_Volume: 85882be1f47e4a7488493f92269fc7bb
   m_Pitch: 1ede274548a6aee4fa4b5641717fc5a6
   m_Send: 00000000000000000000000000000000
@@ -106,6 +107,20 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &-401541434933135820
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 4dfbcb24d4bac074ea701af9b972f2be
+  m_EffectName: Attenuation
+  m_MixLevel: cc65e5cf277079049aa03f702f537764
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!241 &24100000
 AudioMixerController:
   m_ObjectHideFlags: 0
@@ -132,6 +147,7 @@ AudioMixerController:
     - 08e2d13dd7f5a51419ddd11e61b71a9c
     - 9e9e6d2190047dc4e827cc7f185c39ee
     - f8ddde9c4cb58b843bf977fe9c4297b8
+    - f76a283da4630604ba40a50ed3736c26
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -182,9 +198,10 @@ AudioMixerSnapshotController:
   m_SnapshotID: 2ba996e4b07b5d247a39ff81d84f3c8f
   m_FloatValues:
     2dd8c350dc74f7341b72f396a2c0cdd1: -0.7390774
-    85882be1f47e4a7488493f92269fc7bb: -17.039818
+    85882be1f47e4a7488493f92269fc7bb: -14.577511
     9ba6e705ca9d1a342a6c6bf2f793d9b4: -17.039835
     d5b1ae07c77590d4f83f1f919b8991a8: -10.139159
+    1762a94c343e2144689dbefc1787cba5: 3.52604
   m_TransitionOverrides: {}
 --- !u!243 &1301707559870291114
 AudioMixerGroupController:
@@ -202,6 +219,25 @@ AudioMixerGroupController:
   m_Effects:
   - {fileID: -4501776203912006986}
   m_UserColorIndex: 4
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &3838684802843467783
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Slis
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: f76a283da4630604ba40a50ed3736c26
+  m_Children: []
+  m_Volume: 1762a94c343e2144689dbefc1787cba5
+  m_Pitch: 444e46e6015488b4e8e618f1c9f848fd
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -401541434933135820}
+  m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
