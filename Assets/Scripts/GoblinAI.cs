@@ -13,7 +13,7 @@ public class GoblinAI : MonoBehaviour
     [SerializeField] private SpriteRenderer sprite;
     private float _prevPointX;
 
-
+    public AudioSource audio;
     public float attackInterval = 0.2f;
     private float timer = 0f;
 
@@ -79,7 +79,8 @@ public class GoblinAI : MonoBehaviour
 
                 if (playerStats != null)
                 {
-                    playerStats.TakeDamage(attackDamage); // Наносим урон игроку
+                    playerStats.TakeDamage(attackDamage); 
+                    audio.Play();// Наносим урон игроку
                 }
                 timer = 0f; 
             }            
