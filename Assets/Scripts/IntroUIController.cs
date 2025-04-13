@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 
 public class IntroUIController : MonoBehaviour
@@ -14,10 +15,7 @@ public class IntroUIController : MonoBehaviour
     [SerializeField] private TMP_Text skullText;
     [SerializeField] private TMP_Text godText;
 
-
-    [SerializeField] private string path;
-
-    private List<string> _dialogs;
+    public string[] _dialogs;
 
     private string _inputLine;
 
@@ -33,11 +31,18 @@ public class IntroUIController : MonoBehaviour
 
     [SerializeField] private Image shade;
 
+    private string _stramPath = Application.streamingAssetsPath;
+    
+    string introPath = System.IO.Path.Combine(Application.streamingAssetsPath, "INTROtext.txt");
+    string outroPath = System.IO.Path.Combine(Application.streamingAssetsPath, "OUTROtext.txt");
+    
+
     private void Awake()
     {
-        _dialogs = new List<string>();
         StartCoroutine(Skull());
-        ReadTextFile(path);
+        
+        if (SceneManager.GetActiveScene().buildIndex==1) ReadFile(introPath);
+        else ReadFile(outroPath);
     }
     
  
@@ -49,7 +54,7 @@ public class IntroUIController : MonoBehaviour
         {
             TextChange(_num);
         }
-        else SceneManager.LoadScene(2);
+        else StartCoroutine(Shading());
 
     }
 
@@ -90,6 +95,14 @@ public class IntroUIController : MonoBehaviour
     {
         StartCoroutine(Shading());
     }
+
+    void ReadFile(string path)
+    {
+        _dialogs = System.IO.File.ReadAllLines(path);
+        _lastText = _dialogs.Length;
+    }
+    
+    /*
     
     void ReadTextFile(string file_path)
     {
@@ -103,9 +116,11 @@ public class IntroUIController : MonoBehaviour
 
         _stream.Close( );  
         _lastText = _dialogs.Count;
+
+        _dialogs = System.IO.File.ReadAllLines(_SAfilePath);
     }
     
-
+*/
     IEnumerator Skull()
     {
         yield return new WaitForSeconds(1.5f);
@@ -143,6 +158,7 @@ public class IntroUIController : MonoBehaviour
             shade.color = new Color(0, 0, 0, a);
             yield return new WaitForSeconds(0.05f);
         }
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene(2);
     }
 }
