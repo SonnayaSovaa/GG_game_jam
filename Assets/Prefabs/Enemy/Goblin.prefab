@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7370511050352694557}
   m_Layer: 0
   m_Name: Goblin Ai
-  m_TagString: Untagged
+  m_TagString: Goblin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 6830682344150624893}
   m_Layer: 0
   m_Name: collider
-  m_TagString: Untagged
+  m_TagString: Goblin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -182,7 +182,7 @@ MonoBehaviour:
   anim: {fileID: 4687934520919052077}
   target: {fileID: 0}
   moveSpeed: 3
-  attackDamage: 10
+  attackDamage: 7
   agent: {fileID: 7370511050352694557}
   health: 50
 --- !u!1 &4604899679069606060
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 4687934520919052077}
   m_Layer: 0
   m_Name: Goblin_Sprite
-  m_TagString: Untagged
+  m_TagString: Goblin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -261,7 +261,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 3
   m_Sprite: {fileID: 4617948481358823496, guid: 47cf91e5b4a2a0f4191de73611d85f84, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

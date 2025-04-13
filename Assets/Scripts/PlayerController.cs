@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour
                 EnemyAI enemy = currentEnemy.GetComponent<EnemyAI>();
                 if (enemy != null)
                 {
-                    enemy.TakeDamage(10f); // Наносим урон демону лени
+                    enemy.TakeDamage(15f); // Наносим урон демону лени
                 }
             }
             else if (currentEnemy.CompareTag("Goblin")) // Если это гоблин
@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
                 GoblinAI goblin = currentEnemy.GetComponent<GoblinAI>();
                 if (goblin != null)
                 {
-                    goblin.TakeDamage(10f); // Наносим урон гоблину
+                    goblin.TakeDamage(15f); // Наносим урон гоблину
                     playerStats.ModifyStat("Anger", -10f); // Уменьшаем гнев
                 }
             }
