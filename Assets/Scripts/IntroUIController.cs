@@ -15,7 +15,7 @@ public class IntroUIController : MonoBehaviour
     [SerializeField] private TMP_Text skullText;
     [SerializeField] private TMP_Text godText;
 
-    public string[] _dialogs;
+    private string[] _dialogs;
 
     private string _inputLine;
 
@@ -30,19 +30,25 @@ public class IntroUIController : MonoBehaviour
     [SerializeField] private GameObject finalPanel;
 
     [SerializeField] private Image shade;
-
-    private string _stramPath = Application.streamingAssetsPath;
     
     string introPath = System.IO.Path.Combine(Application.streamingAssetsPath, "INTROtext.txt");
-    string outroPath = System.IO.Path.Combine(Application.streamingAssetsPath, "OUTROtext.txt");
+    string outroPathT = System.IO.Path.Combine(Application.streamingAssetsPath, "OUTROtextTRUE.txt");
+    string outroPathF = System.IO.Path.Combine(Application.streamingAssetsPath, "OUTROtextFALSE.txt");
+
     
 
     private void Awake()
     {
+        float win = PlayerPrefs.GetFloat("Win");
+        
         StartCoroutine(Skull());
         
         if (SceneManager.GetActiveScene().buildIndex==1) ReadFile(introPath);
-        else ReadFile(outroPath);
+        else
+        {
+            if (win==0f) ReadFile(outroPathT);
+            else ReadFile(outroPathF);
+        }
     }
     
  
