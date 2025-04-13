@@ -31,6 +31,9 @@ public class EnemyAI : MonoBehaviour
         {
             agent.SetDestination(target.position);
         }
+
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

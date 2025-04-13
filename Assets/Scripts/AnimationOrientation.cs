@@ -11,8 +11,7 @@ public class AnimationOrientation : MonoBehaviour
     {
         Vector2 direction = rg.linearVelocity.normalized;
         if (direction.x != 0)
-        {
-            Debug.Log('l');
+        {           
             if (direction.x < 0)
             {
                 isFacingRignt = false;
