@@ -3693,6 +3693,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 981398167926131389, guid: caa339800d0f02e48b9d39a3a662409c, type: 3}
+      propertyPath: m_ForceReceiveLayers.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 2552511488230978555, guid: caa339800d0f02e48b9d39a3a662409c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2557320201993503399, guid: caa339800d0f02e48b9d39a3a662409c, type: 3}
+      propertyPath: m_ForceReceiveLayers.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719967150268570735, guid: caa339800d0f02e48b9d39a3a662409c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6090962021685941346, guid: caa339800d0f02e48b9d39a3a662409c, type: 3}
       propertyPath: rg2
       value: 
