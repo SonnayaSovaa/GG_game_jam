@@ -4616,11 +4616,6 @@ RectTransform:
   m_AnchoredPosition: {x: 11.263168, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!4 &963626176 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3492191229450821708, guid: e9ce449d04b107d4a81a37d58a44b04d, type: 3}
-  m_PrefabInstance: {fileID: 7208019532019103897}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &981771033
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7473,7 +7468,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 963626176}
   - {fileID: 507296421}
   - {fileID: 894271668}
   - {fileID: 1129071075}
@@ -8392,7 +8386,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5865868911541253275, guid: 8d787d1876a069f43a7d12f672982660, type: 3}
       propertyPath: orthographic size
-      value: 4.47
+      value: 3.6
       objectReference: {fileID: 0}
     - target: {fileID: 8503497721083696814, guid: 8d787d1876a069f43a7d12f672982660, type: 3}
       propertyPath: m_GridSnapping
@@ -8816,6 +8810,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 7140828417127512315, guid: e9ce449d04b107d4a81a37d58a44b04d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9080,7 +9078,6 @@ SceneRoots:
   - {fileID: 1742917454}
   - {fileID: 627092283}
   - {fileID: 1352982112}
-  - {fileID: 239597198}
   - {fileID: 771149219}
   - {fileID: 251042157}
   - {fileID: 509715025}

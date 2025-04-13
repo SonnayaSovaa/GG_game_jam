@@ -47,7 +47,6 @@ GameObject:
   - component: {fileID: 336783812653585737}
   - component: {fileID: 2557320201993503399}
   - component: {fileID: 5761023594492295941}
-  - component: {fileID: 6090962021685941346}
   m_Layer: 0
   m_Name: gg_idle
   m_TagString: Player
@@ -113,7 +112,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 4
   m_Sprite: {fileID: -2920412577185452312, guid: 0ed76ffa27d59b04795e2cbb8106980f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -143,6 +142,14 @@ MonoBehaviour:
   greed: 0
   gluttony: 0
   laziness: 0
+  angerBar: {fileID: 0}
+  greedBar: {fileID: 0}
+  gluttonyBar: {fileID: 0}
+  lazinessBar: {fileID: 0}
+  angerText: {fileID: 0}
+  greedText: {fileID: 0}
+  gluttonyText: {fileID: 0}
+  lazinessText: {fileID: 0}
 --- !u!114 &1318943071934436729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,6 +165,7 @@ MonoBehaviour:
   anim: {fileID: 5761023594492295941}
   moveSpeed: 5
   playerStats: {fileID: 5549853316752012295}
+  sprite: {fileID: 4307886163032174395}
 --- !u!50 &336783812653585737
 Rigidbody2D:
   serializedVersion: 5
@@ -169,8 +177,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
+  m_UseAutoMass: 1
+  m_Mass: 1.4449999
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -184,7 +192,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &2557320201993503399
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -205,10 +213,10 @@ BoxCollider2D:
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -253,17 +261,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6090962021685941346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7797698762897100456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ab6ef72dcdd6be4d9a25548ed51ad6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rg: {fileID: 336783812653585737}
-  sprite: {fileID: 4307886163032174395}

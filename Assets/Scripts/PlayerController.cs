@@ -39,6 +39,12 @@ public class PlayerController : MonoBehaviour
 
         inputActions.PlayerINPT.MoveRight.performed += ctx => RightPressed();
         inputActions.PlayerINPT.MoveRight.canceled += ctx => movementDirection.x = 0;
+        
+        void RightPressed()
+        {
+            movementDirection.x = 1;
+            sprite.flipX = false;
+        }
 
         void RightPressed()
         {
