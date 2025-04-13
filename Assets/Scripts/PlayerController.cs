@@ -1,8 +1,10 @@
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public Animator anim;
     private Rigidbody2D rb;
     public float moveSpeed = 5f;
     //public float healAmount =15;
@@ -32,6 +34,23 @@ public class PlayerController : MonoBehaviour
         inputActions.PlayerINPT.MoveRight.canceled += ctx => movementDirection.x = 0;
 
         inputActions.PlayerINPT.Attack.performed += ctx => Attack();
+        
+        // Анимации (кринжа, i know)
+        inputActions.PlayerINPT.MoveUp.performed += ctx => anim.SetBool("walk", true);;
+        inputActions.PlayerINPT.MoveUp.canceled += ctx => anim.SetBool("walk", false);;
+
+        inputActions.PlayerINPT.MoveDown.performed += ctx => anim.SetBool("walk", true);;
+        inputActions.PlayerINPT.MoveDown.canceled += ctx => anim.SetBool("walk", false);;
+
+        inputActions.PlayerINPT.MoveLeft.performed += ctx => anim.SetBool("walk", true);;
+        inputActions.PlayerINPT.MoveLeft.canceled += ctx => anim.SetBool("walk", false);;
+
+        inputActions.PlayerINPT.MoveRight.performed += ctx => anim.SetBool("walk", true);;
+        inputActions.PlayerINPT.MoveRight.canceled += ctx => anim.SetBool("walk", false);;
+
+
+        inputActions.PlayerINPT.Attack.performed += ctx => anim.SetBool("attack", true);
+        inputActions.PlayerINPT.Attack.canceled += ctx => anim.SetBool("attack", false);
         //inputActions.PlayerINPT.Interact.performed += ctx => interactPressed = true;
         //inputActions.PlayerINPT.Interact.canceled += ctx => interactPressed = false;
 
@@ -56,11 +75,12 @@ public class PlayerController : MonoBehaviour
 
     private void MoveCharacter()
     {
-        rb.linearVelocity = movementDirection * moveSpeed;
+        rb.linearVelocity = movementDirection * moveSpeed;        
     }
 
     private void Attack()
     {
+        
         if (currentEnemy != null)
         {
             Debug.Log($"Атакуем врага: {currentEnemy.name}");
@@ -86,7 +106,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             Debug.Log("Перед игроком нет врагов.");
-        }
+        }        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
