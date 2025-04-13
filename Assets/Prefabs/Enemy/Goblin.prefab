@@ -51,6 +51,7 @@ MonoBehaviour:
   attackDamage: 10
   agent: {fileID: 0}
   health: 50
+  sprite: {fileID: 3366782365090744242}
 --- !u!195 &7370511050352694557
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -185,6 +186,7 @@ MonoBehaviour:
   attackDamage: 10
   agent: {fileID: 7370511050352694557}
   health: 50
+  sprite: {fileID: 3366782365090744242}
 --- !u!1 &4604899679069606060
 GameObject:
   m_ObjectHideFlags: 0

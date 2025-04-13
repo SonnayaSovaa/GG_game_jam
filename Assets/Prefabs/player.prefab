@@ -158,6 +158,7 @@ MonoBehaviour:
   anim: {fileID: 5761023594492295941}
   moveSpeed: 5
   playerStats: {fileID: 5549853316752012295}
+  sprite: {fileID: 4307886163032174395}
 --- !u!50 &336783812653585737
 Rigidbody2D:
   serializedVersion: 5

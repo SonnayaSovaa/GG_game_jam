@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     //private bool interactPressed = false;
     private GameObject currentEnemy;
 
+    [SerializeField] private SpriteRenderer sprite;
+
     private void Awake()
     {
         inputActions = new InputActions();
@@ -27,11 +29,23 @@ public class PlayerController : MonoBehaviour
         inputActions.PlayerINPT.MoveDown.performed += ctx => movementDirection.y = -1;
         inputActions.PlayerINPT.MoveDown.canceled += ctx => movementDirection.y = 0;
 
-        inputActions.PlayerINPT.MoveLeft.performed += ctx => movementDirection.x = -1;
+        inputActions.PlayerINPT.MoveLeft.performed += ctx => LeftPressed();
         inputActions.PlayerINPT.MoveLeft.canceled += ctx => movementDirection.x = 0;
 
-        inputActions.PlayerINPT.MoveRight.performed += ctx => movementDirection.x = 1;
+        void LeftPressed()
+        {
+            movementDirection.x = -1;
+            sprite.flipX = true;
+        }
+
+        inputActions.PlayerINPT.MoveRight.performed += ctx => RightPressed();
         inputActions.PlayerINPT.MoveRight.canceled += ctx => movementDirection.x = 0;
+        
+        void RightPressed()
+        {
+            movementDirection.x = 1;
+            sprite.flipX = false;
+        }
 
         inputActions.PlayerINPT.Attack.performed += ctx => Attack();
         
@@ -75,7 +89,8 @@ public class PlayerController : MonoBehaviour
 
     private void MoveCharacter()
     {
-        rb.linearVelocity = movementDirection * moveSpeed;        
+        rb.linearVelocity = movementDirection * moveSpeed;       
+        Debug.Log(movementDirection);
     }
 
     private void Attack()

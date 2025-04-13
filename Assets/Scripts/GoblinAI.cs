@@ -9,6 +9,9 @@ public class GoblinAI : MonoBehaviour
     public float attackDamage = 10f; // Урон от атаки
     [SerializeField] private NavMeshAgent agent;
     public float health = 50f;
+
+    [SerializeField] private SpriteRenderer sprite;
+    private float _prevPointX;
     private void Start()
     {
         //agent = GetComponent<NavMeshAgent>();
@@ -18,7 +21,7 @@ public class GoblinAI : MonoBehaviour
             target = GameObject.FindGameObjectWithTag("Player")?.transform;
         }
 
-
+        _prevPointX = transform.position.x;
         agent.speed = moveSpeed;
     }
 
@@ -28,6 +31,12 @@ public class GoblinAI : MonoBehaviour
         {
             agent.SetDestination(target.position);
             anim.SetBool("walk", true);
+
+            if (_prevPointX < transform.position.x) sprite.flipX = false;
+            else sprite.flipX = true;
+            
+            _prevPointX = transform.position.x;
+
         }
         else anim.SetBool("walk", false);
         

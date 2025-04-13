@@ -12,6 +12,9 @@ public class EnemyAI : MonoBehaviour
 
     public float lazinessInterval = 1f;
     private float lazinessTimer = 0f;
+    
+    [SerializeField] private SpriteRenderer sprite;
+    private float _prevPointX;
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -21,7 +24,7 @@ public class EnemyAI : MonoBehaviour
             target = GameObject.FindGameObjectWithTag("Player")?.transform;
         }
 
-        
+        _prevPointX = transform.position.x;
         agent.speed = 1f;
     }
 
@@ -30,6 +33,11 @@ public class EnemyAI : MonoBehaviour
         if (target != null && agent.isOnNavMesh)
         {
             agent.SetDestination(target.position);
+            
+            if (_prevPointX < transform.position.x) sprite.flipX = false;
+            else sprite.flipX = true;
+            
+            _prevPointX = transform.position.x;
         }
 
         agent.updateRotation = false;
