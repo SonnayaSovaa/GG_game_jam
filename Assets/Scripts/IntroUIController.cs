@@ -1,10 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.IO;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 
 public class IntroUIController : MonoBehaviour
@@ -22,9 +19,6 @@ public class IntroUIController : MonoBehaviour
     private int _num = 0;
     private int _lastText;
 
-    [SerializeField] private AudioSource godSource;
-    [SerializeField] private AudioSource skullSource;
-
     private string _currString;
 
     [SerializeField] private GameObject finalPanel;
@@ -34,6 +28,10 @@ public class IntroUIController : MonoBehaviour
     string introPath = System.IO.Path.Combine(Application.streamingAssetsPath, "INTROtext.txt");
     string outroPathT = System.IO.Path.Combine(Application.streamingAssetsPath, "OUTROtextTRUE.txt");
     string outroPathF = System.IO.Path.Combine(Application.streamingAssetsPath, "OUTROtextFALSE.txt");
+
+    [SerializeField] private AudioSource mainSource;
+    [SerializeField] private AudioClip godClip;
+    [SerializeField] private AudioClip skullClip;
 
     
 
@@ -70,30 +68,33 @@ public class IntroUIController : MonoBehaviour
         godText.text="";
 
         _currString = _dialogs[num];
+        mainSource.Stop();
 
         if (_currString[0] == '~')
         {
             _currString=_currString.Replace("~", "");
-            StartCoroutine(TypeText(_currString, godText, godSource));
-            godSource.Play();
+            StartCoroutine(TypeText(_currString, godText));
+            mainSource.clip = godClip;
         }
 
         else
         {
-            StartCoroutine(TypeText(_currString, skullText, skullSource));
-            skullSource.Play();
+            StartCoroutine(TypeText(_currString, skullText));
+            mainSource.clip = skullClip;
+            
         }
+        mainSource.Play();
     }
     
     
-    IEnumerator TypeText(string fullText, TMP_Text text, AudioSource source)
+    IEnumerator TypeText(string fullText, TMP_Text text)
     {
         foreach (char c in fullText)
         {
             text.text += c;
             yield return new WaitForSeconds(0.1f);
         }
-        source.Stop();
+        mainSource.Stop();
     }
     
     
@@ -107,26 +108,7 @@ public class IntroUIController : MonoBehaviour
         _dialogs = System.IO.File.ReadAllLines(path);
         _lastText = _dialogs.Length;
     }
-    
-    /*
-    
-    void ReadTextFile(string file_path)
-    {
-        StreamReader _stream = new StreamReader(file_path);
-        
-        while(!_stream.EndOfStream)
-        {
-            _inputLine = _stream.ReadLine( );
-            _dialogs.Add(_inputLine);
-        }
 
-        _stream.Close( );  
-        _lastText = _dialogs.Count;
-
-        _dialogs = System.IO.File.ReadAllLines(_SAfilePath);
-    }
-    
-*/
     IEnumerator Skull()
     {
         yield return new WaitForSeconds(1.5f);
